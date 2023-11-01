@@ -4,6 +4,7 @@ import { Paragraph } from "components/Paragraph";
 import { theme } from "theme";
 import { Columns } from "components/Columns";
 import { Column } from "components/Column";
+import { CallToActionButton } from "components/CallToActionButton";
 import Image from "next/image";
 
 export const BlockRenderer = ({blocks}) => {
@@ -87,7 +88,18 @@ export const BlockRenderer = ({blocks}) => {
         case "core/block": {
           return <BlockRenderer key={block.id} blocks={block.innerBlocks} />;
         }
-        
+      
+      case "acf/ctabutton": {
+        return (
+          <CallToActionButton
+            key={block.id}
+            buttonLabel={block.attributes.data.label}
+            destination={block.attributes.data.destination || "/"}
+            align={block.attributes.data.align}
+            />
+          );
+        }
+
       default:
         return null;
     }
