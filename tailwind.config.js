@@ -8,9 +8,18 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        heading: ["Aboreto", "cursive"],
+        heading: ["Monaco"],
         body: ["Poppins", "sans-serif"],
       },
+      colors: {
+        blue: {
+          950: '#020f4b',
+        },
+        red: {
+          960: '#f50109',
+          950: '#440d22',
+        },
+      }
     },
   },
   plugins: [],
