@@ -1,11 +1,11 @@
 export const getTextAlign = (textAlign = "left") => {
   const textAlignMap = {
-    "left": "text-left",
-    "right": "text-right",
-    "center": "text-center",
-  }
+    left: "text-left",
+    right: "text-right",
+    center: "text-center",
+  };
 
-  return `${textAlignMap[textAlign] || ""}`
+  return `${textAlignMap[textAlign] || ""}`;
 };
 
 export const getFontSizeForHeading = (level) => {

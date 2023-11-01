@@ -4,14 +4,18 @@ import { cleanAndTransformBlocks } from "./cleanAndTransformBlocks";
 import { mapMainMenuItems } from "./mapMainMenuItems";
 
 export const getPageStaticProps = async (context) => {
-  
   const uri = context.params?.slug ? `/${context.params.slug.join("/")}/` : "/";
 
-  const {data} = await client.query({
+  const { data } = await client.query({
     query: gql`
       query PageQuery($uri: String!) {
         nodeByUri(uri: $uri) {
           ... on Page {
+            id
+            title
+            blocks
+          }
+          ... on Blog {
             id
             title
             blocks
@@ -33,12 +37,18 @@ export const getPageStaticProps = async (context) => {
                   ... on Page {
                     uri
                   }
+                  ... on Blog {
+                    uri
+                  }
                 }
                 label
               }
               items {
                 destination {
                   ... on Page {
+                    uri
+                  }
+                  ... on Blog {
                     uri
                   }
                 }
@@ -52,18 +62,18 @@ export const getPageStaticProps = async (context) => {
     variables: {
       uri,
     },
-  })
-  
+  });
+
   return {
     props: {
-      mainMenuItems: mapMainMenuItems(data.acfOptionsMainMenu.mainMenu.menuItems),
+      mainMenuItems: mapMainMenuItems(
+        data.acfOptionsMainMenu.mainMenu.menuItems
+      ),
       callToActionLabel:
         data.acfOptionsMainMenu.mainMenu.callToActionButton.label,
       callToActionDestination:
         data.acfOptionsMainMenu.mainMenu.callToActionButton.destination?.uri,
       blocks: cleanAndTransformBlocks(data.nodeByUri.blocks),
-    }
-  }
-
-
-}
+    },
+  };
+};
