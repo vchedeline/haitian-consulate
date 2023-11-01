@@ -5,22 +5,32 @@ import { theme } from "theme";
 import { Columns } from "components/Columns";
 import { Column } from "components/Column";
 import { CallToActionButton } from "components/CallToActionButton";
+import { BlogSearch } from "components/BlogSearch";
 import Image from "next/image";
 
-export const BlockRenderer = ({blocks}) => {
-  return blocks.map(block => {
-    switch(block.name){
-      case 'core/heading': {
-        return <Heading   key={block.id}
-        level={block.attributes.level}
-        content={block.attributes.content}
-        textAlign={block.attributes.textAlign}/>
+export const BlockRenderer = ({ blocks }) => {
+  console.log("BLOCK: ", blocks); // DEL
+
+  return blocks.map((block) => {
+    switch (block.name) {
+      case "core/post-title":
+      case "core/heading": {
+        return (
+          <Heading
+            key={block.id}
+            level={block.attributes.level}
+            content={block.attributes.content}
+            textAlign={block.attributes.textAlign}
+          />
+        );
       }
-      
-      case 'core/cover': {
-        return <Cover key={block.id} background={block.attributes.url}>
-          <BlockRenderer blocks={block.innerBlocks} />
-        </Cover>
+
+      case "core/cover": {
+        return (
+          <Cover key={block.id} background={block.attributes.url}>
+            <BlockRenderer blocks={block.innerBlocks} />
+          </Cover>
+        );
       }
 
       case "core/columns": {
@@ -60,7 +70,7 @@ export const BlockRenderer = ({blocks}) => {
           </Column>
         );
       }
-      
+
       case "core/image": {
         return (
           <Image
@@ -73,22 +83,25 @@ export const BlockRenderer = ({blocks}) => {
         );
       }
 
-      case 'core/paragraph': {
-        return <Paragraph 
-                  key={block.id} 
-                  textAlign={block.attributes.align} 
-                  content={block.attributes.content}
-                  textColor={theme[block.attributes.textColor] || 
-                  block.attributes.style?.color?.text
-                }
-                  />
+      case "core/paragraph": {
+        return (
+          <Paragraph
+            key={block.id}
+            textAlign={block.attributes.align}
+            content={block.attributes.content}
+            textColor={
+              theme[block.attributes.textColor] ||
+              block.attributes.style?.color?.text
+            }
+          />
+        );
       }
 
       case "core/group":
-        case "core/block": {
-          return <BlockRenderer key={block.id} blocks={block.innerBlocks} />;
-        }
-      
+      case "core/block": {
+        return <BlockRenderer key={block.id} blocks={block.innerBlocks} />;
+      }
+
       case "acf/ctabutton": {
         return (
           <CallToActionButton
@@ -96,12 +109,16 @@ export const BlockRenderer = ({blocks}) => {
             buttonLabel={block.attributes.data.label}
             destination={block.attributes.data.destination || "/"}
             align={block.attributes.data.align}
-            />
-          );
-        }
+          />
+        );
+      }
+
+      case "acf/blogsearch": {
+        return <BlogSearch key={block.id} />;
+      }
 
       default:
         return null;
     }
-  })
-}
+  });
+};
