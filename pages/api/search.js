@@ -18,6 +18,7 @@ const handler = async (req, res) => {
                 }
               }
               title
+              databaseId
               uri
               blogFeatures {
                 title

@@ -9,9 +9,9 @@ export const BlogCard = ({ title, destination, blogTitle, image }) => {
     >
       <div className="flex w-full">
         <Image
-          src=""
-          height="200px"
-          width="300px"
+          src={image}
+          height={200}
+          width={300}
           className="object-cover"
           alt=""
         />

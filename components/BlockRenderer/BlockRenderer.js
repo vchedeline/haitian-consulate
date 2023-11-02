@@ -7,7 +7,10 @@ import { Column } from "components/Column";
 import { CallToActionButton } from "components/CallToActionButton";
 import { BlogSearch } from "components/BlogSearch";
 import { FormspreeForm } from "components/FormspreeForm";
+import { Gallery } from "components/Gallery";
 import Image from "next/image";
+import LeafletMap from "components/LeafletMap/LeafletMap";
+import { List } from "components/List";
 
 export const BlockRenderer = ({ blocks }) => {
   return blocks.map((block) => {
@@ -78,8 +81,24 @@ export const BlockRenderer = ({ blocks }) => {
             height={block.attributes.height}
             width={block.attributes.width}
             alt={block.attributes.alt || ""}
+            priority
           />
         );
+      }
+
+      case "core/gallery": {
+        return (
+          <Gallery
+            key={block.id}
+            columns={block.attributes.columns || 3}
+            cropImages={block.attributes.imageCrop}
+            items={block.innerBlocks}
+          />
+        );
+      }
+
+      case "core/list": {
+        return <List key={block.id} listItems={block.innerBlocks} />;
       }
 
       case "core/paragraph": {
@@ -124,6 +143,10 @@ export const BlockRenderer = ({ blocks }) => {
           />
         );
       }
+
+      // case "core/shortcode": {
+      //   return <LeafletMap />;
+      // }
 
       default:
         return null;

@@ -14,11 +14,33 @@ export const getPageStaticProps = async (context) => {
             id
             title
             blocks
+            featuredImage {
+              node {
+                sourceUrl
+              }
+            }
+            seo {
+              metaDesc
+              title
+            }
           }
           ... on Blog {
             id
             title
             blocks
+            seo {
+              metaDesc
+              title
+            }
+            blogFeatures {
+              title
+              content
+            }
+            featuredImage {
+              node {
+                sourceUrl
+              }
+            }
           }
         }
         acfOptionsMainMenu {
@@ -66,6 +88,10 @@ export const getPageStaticProps = async (context) => {
 
   return {
     props: {
+      seo: data.nodeByUri.seo,
+      title: data.nodeByUri.title,
+      blogFeatures: data.nodeByUri.blogFeatures || null,
+      featuredImage: data.nodeByUri.featuredImage?.node?.sourceUrl || null,
       mainMenuItems: mapMainMenuItems(
         data.acfOptionsMainMenu.mainMenu.menuItems
       ),

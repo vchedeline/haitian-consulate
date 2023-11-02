@@ -19,7 +19,6 @@ export const BlogSearch = () => {
       }),
     });
     const data = await response.json();
-    console.log("SEARCH DATA: ", data);
     setBlogs(data.blogs);
     setTotalResults(data.total);
   };
