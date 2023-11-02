@@ -6,7 +6,6 @@ export const MainMenu = ({
   callToActionLabel,
   callToActionDestination,
 }) => {
-  console.log("MAIN MENU: ", items);
   return (
     <div className="bg-blue-950 text-white px-5 h-[64px] sticky top-0 z-20 flex">
       <div className="py-4 pl-5 flex text-red-960">LEFT SIDE</div>

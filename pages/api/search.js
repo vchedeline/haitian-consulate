@@ -3,10 +3,13 @@ import client from "client";
 
 const handler = async (req, res) => {
   try {
+    const filters = JSON.parse(req.body);
     const { data } = await client.query({
       query: gql`
         query AllBlogs {
-          blogs(where: { offsetPagination: { size: 3, offset: 0 } }) {
+          blogs(where: { offsetPagination: { size: 3,  offset: ${
+            ((filters.page || 1) - 1) * 3
+          }} }) {
             nodes {
               featuredImage {
                 node {
@@ -30,7 +33,7 @@ const handler = async (req, res) => {
       `,
     });
     return res.status(200).json({
-      total: data.blogs.pageInfo,
+      total: data.blogs.pageInfo.offsetPagination.total,
       blogs: data.blogs.nodes,
     });
   } catch (e) {

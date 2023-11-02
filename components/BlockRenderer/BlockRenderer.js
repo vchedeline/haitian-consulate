@@ -6,11 +6,10 @@ import { Columns } from "components/Columns";
 import { Column } from "components/Column";
 import { CallToActionButton } from "components/CallToActionButton";
 import { BlogSearch } from "components/BlogSearch";
+import { FormspreeForm } from "components/FormspreeForm";
 import Image from "next/image";
 
 export const BlockRenderer = ({ blocks }) => {
-  console.log("BLOCK: ", blocks); // DEL
-
   return blocks.map((block) => {
     switch (block.name) {
       case "core/post-title":
@@ -115,6 +114,15 @@ export const BlockRenderer = ({ blocks }) => {
 
       case "acf/blogsearch": {
         return <BlogSearch key={block.id} />;
+      }
+
+      case "acf/formspreeform": {
+        return (
+          <FormspreeForm
+            key={block.id}
+            formId={block.attributes.data.form_id}
+          />
+        );
       }
 
       default:
