@@ -16,7 +16,7 @@ export const MainMenu = ({
             className="hover:bg-red-950 cursor-pointer relative group"
           >
             <div>
-              <Link href={item.destination} className="p-5 block">
+              <Link href={`${item.destination}`} className="p-5 block">
                 {item.label}
               </Link>
             </div>
@@ -25,7 +25,7 @@ export const MainMenu = ({
                 {item.subMenuItems.map((subMenuItem) => (
                   <Link
                     key={subMenuItem.id}
-                    href={subMenuItem.destination}
+                    href={`${subMenuItem.destination}`}
                     className="block whitespace-nowrap p-5 hover:bg-red-960"
                   >
                     {subMenuItem.label}
