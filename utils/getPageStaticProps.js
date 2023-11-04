@@ -44,7 +44,7 @@ export const getPageStaticProps = async (context) => {
           }
         }
         acfOptionsMainMenu {
-          mainMenu {
+          mainMenuPro {
             callToActionButton {
               destination {
                 ... on Page {
@@ -93,12 +93,12 @@ export const getPageStaticProps = async (context) => {
       blogFeatures: data.nodeByUri.blogFeatures || null,
       featuredImage: data.nodeByUri.featuredImage?.node?.sourceUrl || null,
       mainMenuItems: mapMainMenuItems(
-        data.acfOptionsMainMenu.mainMenu.menuItems
+        data.acfOptionsMainMenu.mainMenuPro.menuItems
       ),
       callToActionLabel:
-        data.acfOptionsMainMenu.mainMenu.callToActionButton.label,
+        data.acfOptionsMainMenu.mainMenuPro.callToActionButton.label,
       callToActionDestination:
-        data.acfOptionsMainMenu.mainMenu.callToActionButton.destination?.uri,
+        data.acfOptionsMainMenu.mainMenuPro.callToActionButton.destination?.uri,
       blocks: cleanAndTransformBlocks(data.nodeByUri.blocks),
     },
   };
