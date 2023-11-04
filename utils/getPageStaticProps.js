@@ -50,6 +50,9 @@ export const getPageStaticProps = async (context) => {
                 ... on Page {
                   uri
                 }
+                ... on Blog {
+                  uri
+                }
               }
               label
             }

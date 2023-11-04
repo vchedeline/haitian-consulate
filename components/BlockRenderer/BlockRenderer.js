@@ -13,6 +13,7 @@ import LeafletMap from "components/LeafletMap/LeafletMap";
 import { List } from "components/List";
 
 export const BlockRenderer = ({ blocks }) => {
+  console.log("Block: ", blocks);
   return blocks.map((block) => {
     switch (block.name) {
       case "core/post-title":
