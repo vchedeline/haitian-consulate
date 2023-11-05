@@ -25,12 +25,12 @@ export const MainMenu = ({
               </Link>
             </div>
             {!!item.subMenuItems?.length && (
-              <div className="group-hover:block hidden bg-blue-950 text-center absolute right-0 top-full -mt-3">
+              <div className="group-hover:block hidden bg-blue-960 text-center absolute right-0 top-full -mt-3">
                 {item.subMenuItems.map((subMenuItem) => (
                   <Link
                     key={subMenuItem.id}
                     href={subMenuItem.destination}
-                    className="block whitespace-nowrap p-5 hover:bg-red-950"
+                    className="block whitespace-nowrap p-5 hover:bg-blue-950"
                   >
                     {subMenuItem.label}
                   </Link>

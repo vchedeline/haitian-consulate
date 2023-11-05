@@ -5,4 +5,5 @@ export const theme = {
   secondary: "#ffe2c7",
   tertiary: "#F6F6F6",
   slate: "#1E293B",
+  darkblue: "#020f4b",
 };

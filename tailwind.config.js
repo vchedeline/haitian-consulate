@@ -13,7 +13,8 @@ module.exports = {
       },
       colors: {
         blue: {
-          950: "#020f4b",
+          960: "#020f4b", //Dark
+          950: "#091e8b", //Light
         },
         red: {
           950: "#f50109",
