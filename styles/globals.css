@@ -9,6 +9,9 @@
     @apply bg-blue-950 hover:bg-red-950 inline-block my-2 px-4 py-2 uppercase rounded-md cursor-pointer font-bold text-white;
   }
   .menu {
+    @apply bg-gradient-to-b from-blue-950 to-red-950 text-white px-5 h-[90px] sticky top-0 z-20 flex duration-[400ms] ease-[cubic-bezier(0.2,0.8,0.2,1)]
+  }
+  .menuScrolled {
     @apply bg-gradient-to-b from-blue-950/90 to-red-950/90 text-white px-5 h-[70px] sticky top-0 z-20 flex 
   }
 }

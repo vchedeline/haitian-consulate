@@ -9,8 +9,9 @@ import { BlogSearch } from "components/BlogSearch";
 import { FormspreeForm } from "components/FormspreeForm";
 import { Gallery } from "components/Gallery";
 import Image from "next/image";
-import LeafletMap from "components/LeafletMap/LeafletMap";
+// import LeafletMap from "components/LeafletMap/LeafletMap";
 import { List } from "components/List";
+import { SubHeader } from "components/SubHeader";
 
 export const BlockRenderer = ({ blocks }) => {
   return blocks.map((block) => {
@@ -140,6 +141,17 @@ export const BlockRenderer = ({ blocks }) => {
           <FormspreeForm
             key={block.id}
             formId={block.attributes.data.form_id}
+          />
+        );
+      }
+
+      case "acf/subheader": {
+        return (
+          <SubHeader
+            key={block.id}
+            subImage={block.attributes.data.subheader_image}
+            subTitle={block.attributes.data.subheader_title}
+            align={block.attributes.data.align}
           />
         );
       }
