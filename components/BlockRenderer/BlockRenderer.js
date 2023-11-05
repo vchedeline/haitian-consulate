@@ -13,9 +13,10 @@ import Image from "next/image";
 import { List } from "components/List";
 import { SubHeader } from "components/SubHeader";
 import { Divider } from "components/Divider";
+import { FooterHeader } from "components/FooterHeader";
 
 export const BlockRenderer = ({ blocks }) => {
-  // console.log("Blocks: ", blocks);
+  console.log("Blocks: ", blocks);
   return blocks.map((block) => {
     switch (block.name) {
       case "core/group":
@@ -145,6 +146,12 @@ export const BlockRenderer = ({ blocks }) => {
             destination={block.attributes.data.destination || "/"}
             align={block.attributes.data.align}
           />
+        );
+      }
+
+      case "acf/foothead": {
+        return (
+          <FooterHeader key={block.id} image={block.attributes.data.image} />
         );
       }
 
