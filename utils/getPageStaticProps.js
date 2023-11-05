@@ -45,6 +45,10 @@ export const getPageStaticProps = async (context) => {
         }
         acfOptionsMainMenu {
           mainMenuPro {
+            logo {
+              sourceUrl
+              title
+            }
             callToActionButton {
               destination {
                 ... on Page {
@@ -95,6 +99,7 @@ export const getPageStaticProps = async (context) => {
       title: data.nodeByUri.title,
       blogFeatures: data.nodeByUri.blogFeatures || null,
       featuredImage: data.nodeByUri.featuredImage?.node?.sourceUrl || null,
+      logo: data.acfOptionsMainMenu.mainMenuPro.logo,
       mainMenuItems: mapMainMenuItems(
         data.acfOptionsMainMenu.mainMenuPro.menuItems
       ),

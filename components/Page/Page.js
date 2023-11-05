@@ -13,6 +13,7 @@ export const Page = (props) => {
         items={props.mainMenuItems}
         callToActionDestination={props.callToActionDestination}
         callToActionLabel={props.callToActionLabel}
+        logo={props.logo}
       />
       <BlockRenderer blocks={props.blocks} />
     </div>

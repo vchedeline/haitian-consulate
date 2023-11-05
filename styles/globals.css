@@ -6,6 +6,9 @@
 
 @layer components {
   .btn {
-    @apply bg-red-950 hover:bg-red-960 inline-block my-2 px-4 py-2 uppercase rounded-md cursor-pointer font-bold text-white;
+    @apply bg-blue-950 hover:bg-red-950 inline-block my-2 px-4 py-2 uppercase rounded-md cursor-pointer font-bold text-white;
+  }
+  .menu {
+    @apply bg-gradient-to-b from-blue-950 to-red-950 text-white px-5 h-[70px] sticky top-0 z-20 flex 
   }
 }
