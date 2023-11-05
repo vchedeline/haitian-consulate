@@ -12,27 +12,33 @@ import Image from "next/image";
 // import LeafletMap from "components/LeafletMap/LeafletMap";
 import { List } from "components/List";
 import { SubHeader } from "components/SubHeader";
+import { Divider } from "components/Divider";
 
 export const BlockRenderer = ({ blocks }) => {
+  // console.log("Blocks: ", blocks);
   return blocks.map((block) => {
     switch (block.name) {
-      case "core/post-title":
-      case "core/heading": {
-        return (
-          <Heading
-            key={block.id}
-            level={block.attributes.level}
-            content={block.attributes.content}
-            textAlign={block.attributes.textAlign}
-          />
-        );
+      case "core/group":
+      case "core/block": {
+        return <BlockRenderer key={block.id} blocks={block.innerBlocks} />;
       }
 
-      case "core/cover": {
+      case "core/column": {
         return (
-          <Cover key={block.id} background={block.attributes.url}>
+          <Column
+            key={block.id}
+            width={block.attributes.width}
+            textColor={
+              theme[block.attributes.textColor] ||
+              block.attributes.style?.color?.text
+            }
+            backgroundColor={
+              theme[block.attributes.backgroundColor] ||
+              block.attributes.style?.color?.background
+            }
+          >
             <BlockRenderer blocks={block.innerBlocks} />
-          </Cover>
+          </Column>
         );
       }
 
@@ -55,22 +61,34 @@ export const BlockRenderer = ({ blocks }) => {
         );
       }
 
-      case "core/column": {
+      case "core/cover": {
         return (
-          <Column
-            key={block.id}
-            width={block.attributes.width}
-            textColor={
-              theme[block.attributes.textColor] ||
-              block.attributes.style?.color?.text
-            }
-            backgroundColor={
-              theme[block.attributes.backgroundColor] ||
-              block.attributes.style?.color?.background
-            }
-          >
+          <Cover key={block.id} background={block.attributes.url}>
             <BlockRenderer blocks={block.innerBlocks} />
-          </Column>
+          </Cover>
+        );
+      }
+
+      case "core/post-title":
+      case "core/heading": {
+        return (
+          <Heading
+            key={block.id}
+            level={block.attributes.level}
+            content={block.attributes.content}
+            textAlign={block.attributes.textAlign}
+          />
+        );
+      }
+
+      case "core/gallery": {
+        return (
+          <Gallery
+            key={block.id}
+            columns={block.attributes.columns || 3}
+            cropImages={block.attributes.imageCrop}
+            items={block.innerBlocks}
+          />
         );
       }
 
@@ -83,17 +101,6 @@ export const BlockRenderer = ({ blocks }) => {
             width={block.attributes.width}
             alt={block.attributes.alt || ""}
             priority
-          />
-        );
-      }
-
-      case "core/gallery": {
-        return (
-          <Gallery
-            key={block.id}
-            columns={block.attributes.columns || 3}
-            cropImages={block.attributes.imageCrop}
-            items={block.innerBlocks}
           />
         );
       }
@@ -116,9 +123,18 @@ export const BlockRenderer = ({ blocks }) => {
         );
       }
 
-      case "core/group":
-      case "core/block": {
-        return <BlockRenderer key={block.id} blocks={block.innerBlocks} />;
+      case "core/separator": {
+        return <Divider key={block.id} />;
+      }
+
+      // case "core/shortcode": {
+      //   return <LeafletMap />;
+      // }
+
+      /***************** ACF Cases *******************/
+
+      case "acf/blogsearch": {
+        return <BlogSearch key={block.id} />;
       }
 
       case "acf/ctabutton": {
@@ -130,10 +146,6 @@ export const BlockRenderer = ({ blocks }) => {
             align={block.attributes.data.align}
           />
         );
-      }
-
-      case "acf/blogsearch": {
-        return <BlogSearch key={block.id} />;
       }
 
       case "acf/formspreeform": {
@@ -155,10 +167,6 @@ export const BlockRenderer = ({ blocks }) => {
           />
         );
       }
-
-      // case "core/shortcode": {
-      //   return <LeafletMap />;
-      // }
 
       default:
         return null;

@@ -1,3 +1,5 @@
+import React from "react";
+
 export const List = ({ listItems }) => {
   const listElements = [];
 
@@ -7,12 +9,14 @@ export const List = ({ listItems }) => {
   });
 
   return (
-    <div>
-      <ul>
-        {listElements.map((elem, idx) => (
-          <div key={idx} dangerouslySetInnerHTML={elem} />
-        ))}
-      </ul>
-    </div>
+    <>
+      {listElements.map((elem, idx) => (
+        <div
+          className="max-w-5xl mx-auto"
+          key={idx}
+          dangerouslySetInnerHTML={elem}
+        />
+      ))}
+    </>
   );
 };
