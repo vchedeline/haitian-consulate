@@ -7,7 +7,7 @@ export const Column = ({ children, width, textColor, backgroundColor }) => {
   return (
     <div
       style={{ ...widthStyle, ...textColorStyle, ...backgroundColorStyle }}
-      className="px-2"
+      className="px-2 "
     >
       {children}
     </div>

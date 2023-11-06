@@ -9,18 +9,41 @@ export const FormspreeForm = ({ formId }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-5xl mx-auto my-5">
-      <label htmlFor="email">Email Address</label>
-      <Input id="email" type="email" name="email" />
+    <form onSubmit={handleSubmit} className="space-y-8">
+      <Input
+        id="name"
+        type="name"
+        name="name"
+        className="inputForm"
+        placeholder="Name"
+      />
+      <ValidationError prefix="Name" field="name" errors={state.errors} />
+      <Input
+        id="email"
+        type="email"
+        name="email"
+        className="inputForm"
+        placeholder="Email"
+      />
       <ValidationError prefix="Email" field="email" errors={state.errors} />
+      <Input
+        id="subject"
+        type="subject"
+        name="subject"
+        className="inputForm"
+        placeholder="Subject"
+      />
+      <ValidationError prefix="Subject" field="subject" errors={state.errors} />
       <textarea
-        className="border-2 border-slate-400 p-1 hover:border-slate-500"
         id="message"
         name="message"
+        rows="6"
+        className="textAreaForm"
+        placeholder="Message"
       />
       <ValidationError prefix="Message" field="message" errors={state.errors} />
       <div>
-        <button className="btn" type="submit" disabled={state.submitting}>
+        <button class="btnForm" type="submit" disabled={state.submitting}>
           Submit
         </button>
       </div>

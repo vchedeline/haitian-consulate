@@ -8,11 +8,23 @@
   .btn {
     @apply bg-blue-950 hover:bg-red-950 inline-block my-2 px-4 py-2 uppercase rounded-md cursor-pointer font-bold text-white;
   }
+  .btnForm {
+    @apply py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-blue-950 sm:w-fit hover:bg-blue-950 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-950 dark:hover:bg-blue-950 dark:focus:ring-blue-950;
+  }
+  .textAreaForm {
+    @apply block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-gray-500 focus:border-gray-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500;
+  }
+  .inputForm {
+    @apply shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500;
+  }
+  .labelForm {
+    @apply block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300;
+  }
   .footheader {
     @apply w-4/5 mt-20 h-7 mx-auto bg-repeat-x bg-right bg-contain;
   }
   .menu {
-    @apply bg-gradient-to-b from-blue-950 to-red-950 text-white px-5 h-[90px] sticky top-0 z-20 flex duration-[400ms] ease-[cubic-bezier(0.2,0.8,0.2,1)]
+    @apply bg-gradient-to-b from-blue-950 to-red-950 text-white px-5 h-[90px] sticky top-0 z-30 flex duration-[400ms] ease-[cubic-bezier(0.2,0.8,0.2,1)]
   }
   .menuScrolled {
     @apply bg-gradient-to-b from-blue-950/90 to-red-950/90 text-white px-5 h-[70px] sticky top-0 z-20 flex 

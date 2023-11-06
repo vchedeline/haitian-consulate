@@ -1,5 +1,6 @@
 import { BlockRenderer } from "components/BlockRenderer";
 import { MainMenu } from "components/MainMenu";
+import dynamic from "next/dynamic";
 import Head from "next/head";
 
 export const Page = (props) => {

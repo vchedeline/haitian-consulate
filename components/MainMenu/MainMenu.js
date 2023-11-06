@@ -72,13 +72,20 @@ export const MainMenu = ({
       <div id="google_translate_element"></div>
       <div className={scrollState ? "menu menuScrolled" : "menu"}>
         <div className="py-4 flex max-w-sm w-1/3 h-full justify-items-center bg-white/10 relative">
-          <Image src={logo.sourceUrl} alt={logo.title} fill />
+          <Link href="/">
+            <Image
+              src={logo.sourceUrl}
+              alt={logo.title}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
+          </Link>
         </div>
-        <div className="flex flex-1 justify-end space-x-4 h-full ">
+        <div className="flex flex-1 justify-end space-x-4 h-full">
           {(items || []).map((item) => (
             <div
               key={item.id}
-              className="hover:bg-blue-950 cursor-pointer relative group my-0"
+              className="hover:bg-blue-950 cursor-pointer relative group my-0 place-self-center"
             >
               <div>
                 <Link href={item.destination} className="p-6 block">

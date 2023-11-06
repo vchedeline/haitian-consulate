@@ -7,16 +7,15 @@ import { Column } from "components/Column";
 import { CallToActionButton } from "components/CallToActionButton";
 import { BlogSearch } from "components/BlogSearch";
 import { FormspreeForm } from "components/FormspreeForm";
-import { Gallery } from "components/Gallery";
 import Image from "next/image";
-// import LeafletMap from "components/LeafletMap/LeafletMap";
 import { List } from "components/List";
 import { SubHeader } from "components/SubHeader";
 import { Divider } from "components/Divider";
 import { FooterHeader } from "components/FooterHeader";
+import { useMemo } from "react";
+import dynamic from "next/dynamic";
 
 export const BlockRenderer = ({ blocks }) => {
-  // console.log("Blocks: ", blocks);
   return blocks.map((block) => {
     switch (block.name) {
       case "core/group":
@@ -102,6 +101,7 @@ export const BlockRenderer = ({ blocks }) => {
             width={block.attributes.width}
             alt={block.attributes.alt || ""}
             priority
+            className="mx-auto"
           />
         );
       }
@@ -127,10 +127,6 @@ export const BlockRenderer = ({ blocks }) => {
       case "core/separator": {
         return <Divider key={block.id} />;
       }
-
-      // case "core/shortcode": {
-      //   return <LeafletMap />;
-      // }
 
       /***************** ACF Cases *******************/
 
@@ -164,6 +160,21 @@ export const BlockRenderer = ({ blocks }) => {
         );
       }
 
+      case "acf/leafmap": {
+        const Map = useMemo(
+          () =>
+            dynamic(() => import("../LeafletMap/LeafletMap"), {
+              loading: () => <p>A map is loading</p>,
+              ssr: false,
+            }),
+          []
+        );
+        return (
+          <div className={`h-[450px] bg-black`}>
+            <Map key={block.id} />
+          </div>
+        );
+      }
       case "acf/subheader": {
         return (
           <SubHeader
