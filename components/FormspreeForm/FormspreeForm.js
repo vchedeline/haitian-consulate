@@ -9,7 +9,7 @@ export const FormspreeForm = ({ formId }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-8">
+    <form onSubmit={handleSubmit} className="space-y-8" name="form">
       <Input
         id="name"
         type="name"
@@ -43,7 +43,12 @@ export const FormspreeForm = ({ formId }) => {
       />
       <ValidationError prefix="Message" field="message" errors={state.errors} />
       <div>
-        <button class="btnForm" type="submit" disabled={state.submitting}>
+        <button
+          name="submitBtn"
+          className="btnForm"
+          type="submit"
+          disabled={state.submitting}
+        >
           Submit
         </button>
       </div>

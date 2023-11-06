@@ -65,7 +65,7 @@ export const MainMenu = ({
       events.off("routeChangeStart", removeScript);
       events.off("routeChangeComplete", addScript);
     };
-  }, []);
+  }, [isFallback, events]);
 
   return (
     <>

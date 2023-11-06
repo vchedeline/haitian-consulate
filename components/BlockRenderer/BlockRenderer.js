@@ -16,6 +16,14 @@ import { useMemo } from "react";
 import dynamic from "next/dynamic";
 
 export const BlockRenderer = ({ blocks }) => {
+  const Map = useMemo(
+    () =>
+      dynamic(() => import("../LeafletMap/LeafletMap"), {
+        loading: () => <p>A map is loading</p>,
+        ssr: false,
+      }),
+    []
+  );
   return blocks.map((block) => {
     switch (block.name) {
       case "core/group":
@@ -37,7 +45,7 @@ export const BlockRenderer = ({ blocks }) => {
               block.attributes.style?.color?.background
             }
           >
-            <BlockRenderer blocks={block.innerBlocks} />
+            <BlockRenderer key={block.id} blocks={block.innerBlocks} />
           </Column>
         );
       }
@@ -56,7 +64,7 @@ export const BlockRenderer = ({ blocks }) => {
               block.attributes.style?.color?.background
             }
           >
-            <BlockRenderer blocks={block.innerBlocks} />
+            <BlockRenderer key={block.id} blocks={block.innerBlocks} />
           </Columns>
         );
       }
@@ -64,7 +72,7 @@ export const BlockRenderer = ({ blocks }) => {
       case "core/cover": {
         return (
           <Cover key={block.id} background={block.attributes.url}>
-            <BlockRenderer blocks={block.innerBlocks} />
+            <BlockRenderer key={block.id} blocks={block.innerBlocks} />
           </Cover>
         );
       }
@@ -161,14 +169,6 @@ export const BlockRenderer = ({ blocks }) => {
       }
 
       case "acf/leafmap": {
-        const Map = useMemo(
-          () =>
-            dynamic(() => import("../LeafletMap/LeafletMap"), {
-              loading: () => <p>A map is loading</p>,
-              ssr: false,
-            }),
-          []
-        );
         return (
           <div className={`h-[450px] bg-black`}>
             <Map key={block.id} />
