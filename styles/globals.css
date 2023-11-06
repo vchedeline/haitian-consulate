@@ -6,7 +6,10 @@
 
 @layer components {
   .btn {
-    @apply bg-blue-950 hover:bg-red-950 inline-block my-2 px-4 py-2 uppercase rounded-md cursor-pointer font-bold text-white;
+    @apply bg-blue-950 hover:bg-red-950 inline-block my-2 px-4 py-2 uppercase rounded-md cursor-pointer font-semibold text-white;
+  }
+  .btnMedia {
+    @apply bg-blue-950 hover:bg-red-950 inline-block my-2 px-4 py-2 uppercase rounded-md cursor-pointer font-semibold text-white;
   }
   .btnForm {
     @apply py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-blue-950 sm:w-fit hover:bg-blue-950 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-950 dark:hover:bg-blue-950 dark:focus:ring-blue-950;

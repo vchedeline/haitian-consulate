@@ -12,7 +12,11 @@ export const CallToActionButton = ({
   };
   return (
     <div className={alignMap[align]}>
-      <ButtonLink destination={destination} label={buttonLabel} />
+      <ButtonLink
+        destination={destination}
+        label={buttonLabel}
+        btnClass="btn"
+      />
     </div>
   );
 };
