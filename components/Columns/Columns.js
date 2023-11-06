@@ -9,7 +9,7 @@ export const Columns = ({
   return (
     <div style={{ ...textColorStyle, ...backgroundColorStyle }}>
       <div
-        className={`max-w-7xl mx-auto ${
+        className={`max-w-7xl mx-auto my-10 ${
           isStackedOnMobile ? "block md:flex" : "flex"
         }`}
       >

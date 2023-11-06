@@ -16,7 +16,7 @@ import { Divider } from "components/Divider";
 import { FooterHeader } from "components/FooterHeader";
 
 export const BlockRenderer = ({ blocks }) => {
-  console.log("Blocks: ", blocks);
+  // console.log("Blocks: ", blocks);
   return blocks.map((block) => {
     switch (block.name) {
       case "core/group":
@@ -82,16 +82,16 @@ export const BlockRenderer = ({ blocks }) => {
         );
       }
 
-      case "core/gallery": {
-        return (
-          <Gallery
-            key={block.id}
-            columns={block.attributes.columns || 3}
-            cropImages={block.attributes.imageCrop}
-            items={block.innerBlocks}
-          />
-        );
-      }
+      // case "core/gallery": {
+      //   return (
+      //     <Gallery
+      //       key={block.id}
+      //       columns={block.attributes.columns || 3}
+      //       cropImages={block.attributes.imageCrop}
+      //       items={block.innerBlocks}
+      //     />
+      //   );
+      // }
 
       case "core/image": {
         return (
