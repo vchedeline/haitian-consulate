@@ -32,7 +32,7 @@ export const List = ({ listItems }) => {
   });
 
   return (
-    <ul className="max-w-5xl mx-auto list-item list-disc list-inside">
+    <ul className="max-w-5xl mx-auto mb-5 list-disc list-inside">
       {listElements.map((elem, idx) => (
         <div key={idx} dangerouslySetInnerHTML={elem} />
       ))}
