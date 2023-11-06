@@ -13,7 +13,7 @@ export const SideBar = ({
   return (
     <>
       <div
-        className="sidebar-container fixed w-full h-full overflow-hidden justify-center bg-white grid pt-[120px] left-0 z-40"
+        className="sidebar-container fixed w-full h-full overflow-auto justify-center bg-white grid pt-[120px] left-0 z-40"
         style={{
           opacity: `${isOpen ? "1" : "0"}`,
           top: ` ${isOpen ? "0" : "-100%"}`,
@@ -33,7 +33,7 @@ export const SideBar = ({
             />
           </svg>
         </button>
-        <div className="sidebar-nav text-center leading-relaxed text-xl">
+        <div className="sidebar-nav text-center leading-relaxed text-sm">
           <div className="justify-center">
             <Image
               src={logo.sourceUrl}
@@ -46,19 +46,19 @@ export const SideBar = ({
           {(items || []).map((item) => (
             <div
               key={item.id}
-              className="hover:text-red-950 cursor-pointer relative group my-0 place-self-center"
+              className="cursor-pointer relative group my-0 place-self-center"
             >
               <div>
                 <Link
                   href={item.destination}
-                  className="p-6 block"
+                  className="p-2 block text-blue-950 font-bold"
                   onClick={toggle}
                 >
                   {item.label}
                 </Link>
               </div>
               {!!item.subMenuItems?.length && (
-                <div className="group-hover:block text-center top-full border-t-2 border-black ">
+                <div className="group-hover:block text-center top-full">
                   {item.subMenuItems.map((subMenuItem) => (
                     <Link
                       key={subMenuItem.id}
@@ -73,7 +73,7 @@ export const SideBar = ({
               )}
             </div>
           ))}
-          <div className="ml-3 my-auto" onClick={toggle}>
+          <div className="mt-3 my-auto" onClick={toggle}>
             <ButtonLink
               destination={callToActionDestination}
               label={callToActionLabel}
