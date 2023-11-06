@@ -16,9 +16,9 @@ export const SubHeader = ({ subImage, subTitle, align }) => {
         priority={true}
         className="mix-blend-soft-light object-cover blur-sm"
       />
-      <div className="w-full">
+      <div className="w-full pl-6">
         <h1
-          className={`${alignMap[align]} font-heading max-w-5xl mx-20 my-5 text-6xl text-left `}
+          className={`${alignMap[align]} font-heading max-w-5xl text-6xl text-left mx-auto my-5`}
         >
           {subTitle}
         </h1>
