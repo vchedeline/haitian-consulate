@@ -32,7 +32,7 @@ export const MainMenu = ({ props }) => {
       s.setAttribute("id", id);
       const q = document.getElementById(id);
       if (!q) {
-        document.body.appendChild(s);
+        document.body.append(s);
         window.googleTranslateElementInit = googleTranslateElementInit;
       }
     };
