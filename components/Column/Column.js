@@ -26,7 +26,7 @@ export const Column = ({
     return (
       <div
         style={{ ...widthStyle, ...textColorStyle, ...backgroundColorStyle }}
-        className="px-2 py-2 flex flex-col place-content-center"
+        className="px-2"
       >
         {children}
       </div>
