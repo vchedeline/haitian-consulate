@@ -17,8 +17,8 @@ export const FormspreeForm = ({ formId }) => {
         />
         <h1 className="text-xl font-bold mx-auto my-4">Thank you!</h1>
         <p>
-          We've received your message. <br /> Someone from our team will contact
-          you soon.
+          We have received your message. <br /> Someone from our team will
+          contact you soon.
         </p>
       </div>
     );
