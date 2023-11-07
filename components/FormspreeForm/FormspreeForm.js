@@ -13,6 +13,7 @@ export const FormspreeForm = ({ formId }) => {
           width={350}
           height={350}
           className="mx-auto"
+          alt=""
         />
         <h1 className="text-xl font-bold mx-auto my-4">Thank you!</h1>
         <p>
