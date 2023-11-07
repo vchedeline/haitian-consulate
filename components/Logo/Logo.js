@@ -10,11 +10,8 @@ export const Logo = ({ logo, callToActionDestination, callToActionLabel }) => {
 
   // change between the logo and the button when the user scrolls
   const changeNavButton = () => {
-    if (window.scrollY >= 400 && window.innerWidth < 768) {
-      setShowButton(true);
-    } else {
-      setShowButton(false);
-    }
+    if (window.scrollY >= 400 && window.innerWidth < 768) setShowButton(true);
+    else setShowButton(false);
   };
   useEffect(() => {
     window.addEventListener("scroll", changeNavButton);
@@ -33,7 +30,7 @@ export const Logo = ({ logo, callToActionDestination, callToActionLabel }) => {
   return (
     <>
       <div
-        className="py-4 flex max-w-sm w-1/3 h-full justify-center items-center bg-white/10 relative"
+        className="py-4 flex max-w-sm w-1/3 h-full justify-center items-center relative"
         style={{ display: showButton ? "none" : "flex" }}
       >
         <Link href="/">
@@ -41,13 +38,13 @@ export const Logo = ({ logo, callToActionDestination, callToActionLabel }) => {
             src={logo.sourceUrl}
             alt={logo.title}
             width={width < 1024 ? "500" : "300"}
-            height={width < 1024 ? "100" : "300"}
+            height={width < 1024 ? "500" : "300"}
             className="relative"
           />
         </Link>
       </div>
       <div
-        className="py-4 flex max-w-sm w-1/3 h-full justify-center items-center bg-white/10 relative"
+        className="py-4 flex max-w-sm w-1/3 h-full justify-center items-center relative "
         style={{
           display: showButton ? "flex" : "none",
         }}

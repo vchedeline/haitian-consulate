@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-import { Results } from "./Results";
-import { Pagination } from "./Pagination";
 import { useRouter } from "next/router";
 import queryString from "query-string";
+import { useEffect, useState } from "react";
+import { Pagination } from "./Pagination";
+import { Results } from "./Results";
 
 export const BlogSearch = () => {
   const [blogs, setBlogs] = useState([]);

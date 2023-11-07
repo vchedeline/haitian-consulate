@@ -15,7 +15,10 @@ export const MainMenu = ({ props }) => {
   // Google Translate Script
   const googleTranslateElementInit = () => {
     new window.google.translate.TranslateElement(
-      { pageLanguage: "auto", includedLanguages: "fr,en,ht" },
+      {
+        pageLanguage: "en",
+        includedLanguages: "fr,en,ht",
+      },
       "google_translate_element"
     );
   };

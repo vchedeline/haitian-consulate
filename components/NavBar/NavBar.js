@@ -14,15 +14,13 @@ export const NavBar = ({
   const [scrollState, setScrollState] = useState(false);
 
   // Scrolling event
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  });
-
   const handleScroll = () => {
-    if (window.scrollY > 50) setScrollState(true);
+    if (window.scrollY >= 50) setScrollState(true);
     else setScrollState(false);
   };
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <>
@@ -52,13 +50,9 @@ export const NavBar = ({
           {(items || []).map((item) => (
             <div
               key={item.id}
-              className="hover:bg-blue-950 cursor-pointer relative group my-0 place-self-center"
+              className="hover:bg-blue-950 cursor-pointer flex p-6 relative group h-full justify-center items-center"
             >
-              <div>
-                <Link href={item.destination} className="p-6 block">
-                  {item.label}
-                </Link>
-              </div>
+              <Link href={item.destination}>{item.label}</Link>
               {!!item.subMenuItems?.length && (
                 <div className="group-hover:block hidden bg-blue-960 text-center absolute right-0 top-full -mt-1">
                   {item.subMenuItems.map((subMenuItem) => (

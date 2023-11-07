@@ -38,11 +38,4 @@ export const List = ({ listItems }) => {
       ))}
     </ul>
   );
-
-  // const ulTag = React.createElement("ul", {
-  //   dangerouslySetInnerHTML: { __html: listElements.join("") },
-  //   className: "max-w-5xl mx-auto list-item list-disc list-inside",
-  // });
-
-  // return ulTag;
 };

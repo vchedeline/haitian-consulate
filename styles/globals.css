@@ -26,6 +26,9 @@
   .footheader {
     @apply w-4/5 mt-20 h-7 mx-auto bg-repeat-x bg-right bg-contain;
   }
+  .footCol {
+    @apply flex flex-col
+  }
   .menu {
     @apply bg-gradient-to-b from-blue-950 to-red-950 text-white px-5 h-[90px] sticky top-0 z-30 flex duration-[400ms] ease-[cubic-bezier(0.2,0.8,0.2,1)]
   }

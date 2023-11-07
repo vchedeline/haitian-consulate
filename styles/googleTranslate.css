@@ -32,7 +32,12 @@
     font-size:0px;
   }
 
-.VIpgJd-ZVi9od-ORHb-OEVmcd{ display: none !important;}
+.goog-text-highlight {
+    background: none !important;
+    box-shadow: none !important;
+}
+
+.VIpgJd-ZVi9od-ORHb-OEVmcd { display: none !important;}
 
 body {position: static !important; top:0px !important;}
 

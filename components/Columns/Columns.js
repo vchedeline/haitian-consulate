@@ -6,10 +6,11 @@ export const Columns = ({
 }) => {
   const textColorStyle = textColor ? { color: textColor } : {};
   const backgroundColorStyle = backgroundColor ? { backgroundColor } : {};
+
   return (
     <div style={{ ...textColorStyle, ...backgroundColorStyle }}>
       <div
-        className={`max-w-7xl mx-auto my-10 ${
+        className={`max-w-7xl mx-auto my-5 ${
           isStackedOnMobile ? "block md:flex" : "flex"
         }`}
       >

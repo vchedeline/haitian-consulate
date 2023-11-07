@@ -1,19 +1,19 @@
-import { Cover } from "components/Cover";
-import { Heading } from "components/Heading";
-import { Paragraph } from "components/Paragraph";
-import { theme } from "theme";
-import { Columns } from "components/Columns";
-import { Column } from "components/Column";
-import { CallToActionButton } from "components/CallToActionButton";
-import { BlogSearch } from "components/BlogSearch";
-import { FormspreeForm } from "components/FormspreeForm";
+import dynamic from "next/dynamic";
 import Image from "next/image";
-import { List } from "components/List";
-import { SubHeader } from "components/SubHeader";
+import { theme } from "theme";
+import { useMemo } from "react";
+import { BlogSearch } from "components/BlogSearch";
+import { CallToActionButton } from "components/CallToActionButton";
+import { Column } from "components/Column";
+import { Columns } from "components/Columns";
+import { Cover } from "components/Cover";
 import { Divider } from "components/Divider";
 import { FooterHeader } from "components/FooterHeader";
-import { useMemo } from "react";
-import dynamic from "next/dynamic";
+import { FormspreeForm } from "components/FormspreeForm";
+import { Heading } from "components/Heading";
+import { List } from "components/List";
+import { Paragraph } from "components/Paragraph";
+import { SubHeader } from "components/SubHeader";
 
 export const BlockRenderer = ({ blocks }) => {
   const Map = useMemo(
@@ -36,6 +36,7 @@ export const BlockRenderer = ({ blocks }) => {
           <Column
             key={block.id}
             width={block.attributes.width}
+            blockClass={block.attributes.className}
             textColor={
               theme[block.attributes.textColor] ||
               block.attributes.style?.color?.text
@@ -88,17 +89,6 @@ export const BlockRenderer = ({ blocks }) => {
           />
         );
       }
-
-      // case "core/gallery": {
-      //   return (
-      //     <Gallery
-      //       key={block.id}
-      //       columns={block.attributes.columns || 3}
-      //       cropImages={block.attributes.imageCrop}
-      //       items={block.innerBlocks}
-      //     />
-      //   );
-      // }
 
       case "core/image": {
         return (
